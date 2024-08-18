@@ -22,7 +22,11 @@
 1. 빨간색과 파란색 반으로 나뉜 원을 그린다.
 2. 반지름을 지름으로 하는 빨간색, 파란색 원을 왼쪽, 오른쪽에 덮어서 그린다.
 
-빨간색과 파란색 반원은 태극기의 왼쪽 위 모서리와 오른쪽 아래 모서리로 그어지는 대각선으로 나뉜다. 따라서, `drawArc`로 반원을 그릴 때 시작 각도(`startAngle`)는 0과 pi radian에서 이 대각선의 내각을 더한 위치가 되어야 한다. 대각선으로 나뉘는 직각 삼각형의 밑변과 높이를 알고 있으므로, 사잇각을 구하기 위해 `atan()`을 사용한다.
+이 때, 빨간색과 파란θ색 반원은 태극기의 왼쪽 위 모서리와 오른쪽 아래 모서리로 그어지는 대각선으로 나뉜다. 따라서, drawArc로 반원을 그릴 때 시작 각도(startAngle)는 0과 pi에서 이 대각선의 내각을 더한 위치가 된다. 태극기의 절반인 직각 삼각형에서 밑변과 높이를 알고 있으므로, 내각은 아래와 같이 계산할 수 있다.
+
+<img src="documents/images/angle.png" width="400" />
+
+위 공식에 따라 `atan()` 함수를 사용해서 내각을 구하고, Canvas.drawArc에서 startAngle에 이 내각을 더해주면 아래와 같이 그려진다.
 
 ```dart
 class TaegukgiPainter extends CustomPainter {
@@ -36,13 +40,13 @@ class TaegukgiPainter extends CustomPainter {
 }
 ```
 
-<img src="documents/images/circle-1.png" width="600" />
+<img src="documents/images/circle-1.png" width="400" />
 
 다음으로, 대각선을 축으로 하고 그려진 원의 반지름을 지름으로 하는 빨간색, 파란색 반원을 그려준다. 각 원의 색상이 기존 색상을 덮어쓰면서 태극 모양으로 보이게 된다.
 
 <img src="documents/images/code-2.png" width="500" />
 
-<img src="documents/images/circle-2.png" width="600" />
+<img src="documents/images/circle-2.png" width="400" />
 
 ## 괘 그리기
 
